@@ -1,0 +1,9 @@
+### 로그인
+POST http://localhost:8080/api/authenticate
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin"
+}
+
