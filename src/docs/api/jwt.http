@@ -7,3 +7,16 @@ Content-Type: application/json
   "password": "admin"
 }
 
+### 회원가입
+POST http://localhost:8080/api/signup
+Content-Type: application/json
+
+{
+  "username": "wjdrmsl",
+  "password":"password",
+  "nickname": "별명"
+}
+
+### 내 정보 조회
+GET http://localhost:8080/api/user/admin
+
