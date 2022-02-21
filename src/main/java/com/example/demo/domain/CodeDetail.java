@@ -1,8 +1,6 @@
 package com.example.demo.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,27 +10,29 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
-@JsonIgnoreProperties(value = "hibernateLazyInitializer")
 @Getter @Setter @ToString
-@EqualsAndHashCode(of = "groupCode")
-@Entity @Table(name = "code_group")
-public class CodeGroup {
+@EqualsAndHashCode(of = {"groupCode", "codeValue"})
+@Entity
+@IdClass(CodeDetailId.class)
+@Table(name = "code_detail")
+public class CodeDetail {
 
-    @Id @Column(length = 3)
+    @Id
+    @Column(length = 3)
     private String groupCode;
 
+    @Id
+    @Column(length = 3)
+    private String codeValue;
+
     @Column(length = 30, nullable = false)
-    private String groupName;
+    private String codeName;
+
+    private int sortSeq;
 
     @Column(length = 1)
     private String useYn = "Y";
-
-    @JsonIgnore
-    @OneToMany
-    @JoinColumn(name = "groupCode")
-    private List<CodeDetail> codeDetails;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     @CreationTimestamp
@@ -41,4 +41,5 @@ public class CodeGroup {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     @UpdateTimestamp
     private LocalDateTime updDate;
+
 }

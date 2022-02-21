@@ -14,7 +14,7 @@ Content-Type: application/json
 {
   "username": "wjdrmsl",
   "password":"password",
-  "nickname": "별명"
+  "nickname": "별명입니다"
 }
 
 ### 내 정보 조회

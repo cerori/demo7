@@ -1,0 +1,11 @@
+### 코드그룹 등록
+POST http://localhost:8080/codegroups
+Content-Type: application/json
+
+{
+  "groupCode": "001",
+  "groupName": "그룹1"
+}
+
+### 코드그룹 목록 조회
+GET http://localhost:8080/codedetails/list
